@@ -1,0 +1,15 @@
+<!-- Обработка рекламы в нужное время -->
+<script>
+  function showFullscrenAd() {
+    sdk.adv.showFullscreenAdv({
+      callbacks: {
+        onClose: function (wasShown) {
+          unityInstance.SendMessage('YandexSDK', 'OnInterstitialShown');
+        },
+        onError: function (error) {
+          unityInstance.SendMessage('YandexSDK', 'OnInterstitialFailed', error);
+        }
+      }
+    })
+  }
+</script>
